@@ -2,6 +2,8 @@ import React, { useState } from "react"
 
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 
+import {Form, FormControl,Button} from "react-bootstrap"
+
 const AddNewFriend = props => {
 
     const [friend, setFriend] = useState({name: "", age: "", email: "" })
@@ -32,35 +34,35 @@ const AddNewFriend = props => {
             })
             .catch(err=> console.log(err))
 
-
+        setFriend({name: "", age: "", email: "" })
     }
 
 
     return (
-        <form onSubmit={friendSubmit}>
-            <input
+        <Form onSubmit={friendSubmit}>
+            <FormControl
                 placeholder="Name"
                 type="name"
                 name="name" 
                 value={friend.name}
                 onChange={handleChange}
             />
-            <input
+            <FormControl
                 placeholder="Age"
                 type="age"
                 name="age"
                 value={friend.age}
                 onChange={handleChange}
             />
-            <input
+            <FormControl
                 placeholder="Email"
                 type="email"
                 name="email"
                 value={friend.email}
                 onChange={handleChange}
             />
-            <button type="submit">Add Friend</button>
-        </form>
+            <Button variant="primary" type="submit">Add Friend</Button>
+        </Form>
     )
 }
 
